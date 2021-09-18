@@ -6,27 +6,45 @@ class ToppagesController < ApplicationController
       arry =current_user.boxposts.pluck(:content)
       sorted = arry.sort
       
-      
-      lowest = arry.min
-      highest = arry.max
       len = arry.length
-      median = len % 2 == 1 ? sorted[len/2] : (sorted[len/2 - 1] + sorted[len/2]).to_f / 2
-      
-      if len % 2 == 0
-        q1_arry = sorted.slice(0, len/2 )
+      if len == 0
+        lowest = 0
       else
-        q1_arry = sorted.slice(0, len/2 )
+        lowest = arry.min
+      end
+      
+      if len == 0
+        highest = 0
+      else
+        highest = arry.max
+      end
+      
+      #median = len % 2 == 1 ? sorted[len/2] : (sorted[len/2 - 1] + sorted[len/2]).to_f / 2
+      
+      if len == 0
+        median = 0
+      elsif len % 2 == 0
+        median = (sorted[len/2 - 1] + sorted[len/2]).to_f / 2
+      else
+        median = sorted[len/2]
+      end
+          
+      if len % 2 == 0
+        q1_arry = sorted.slice(0,len/2)
+      else
+        q1_arry = sorted.slice(0, len/2)
       end
       q1_len = q1_arry.length
       q1 = q1_len % 2 == 1 ? q1_arry[q1_len/2].to_i : (q1_arry[q1_len/2 - 1].to_i + q1_arry[q1_len/2].to_i).to_f / 2
-
-      if len % 2 == 0
+      
+      if len == 0
+        q3_arry = []
+      elsif len % 2 == 0
         q3_arry = sorted.slice(len/2 , len - 1)
       else
         q3_arry = sorted.slice(len/2 + 1, len - 1)
       end
       q3_len = q3_arry.length  
-      
       q3 = q3_len % 2 == 1 ? q3_arry[q3_len/2].to_i : (q3_arry[q3_len/2 - 1].to_i + q3_arry[q3_len/2].to_i).to_f / 2
       
       category = ["データ"]
