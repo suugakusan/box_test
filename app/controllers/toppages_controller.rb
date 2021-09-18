@@ -3,8 +3,9 @@ class ToppagesController < ApplicationController
     if logged_in?
       @boxpost = current_user.boxposts.build
       @boxposts = current_user.boxposts.order(content: :asc)
-      arry =current_user.boxposts.map {|hash| hash[:content].to_i}
+      arry =current_user.boxposts.pluck(:content)
       sorted = arry.sort
+      
       
       if current_user.boxposts.any?
       lowest = arry.min
@@ -33,7 +34,13 @@ class ToppagesController < ApplicationController
       end
       category = ["データ"]
       current_quantity = [[lowest,q1,median,q3,highest]]
-
+      
+       @lowest = lowest
+       @q1 = q1
+       @median = median
+       @q3 = q3
+       @highest = highest
+       
       @graph = LazyHighCharts::HighChart.new('graph') do |f|
       f.title(text: '気温の箱ひげ図')
       f.xAxis(categories: category)
