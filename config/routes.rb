@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
-  get 'sessions/new'
-  get 'sessions/create'
-  get 'sessions/destroy'
+  get 'boxposts/create'
+  get 'boxposts/destroy'
   root to: 'toppages#index'
   
   get 'login', to: 'sessions#new'
@@ -10,4 +9,5 @@ Rails.application.routes.draw do
   
   get 'signup', to: 'users#new'
   resources :users, only: [:create]
+  resources :boxposts, only: [:create, :destroy]
 end

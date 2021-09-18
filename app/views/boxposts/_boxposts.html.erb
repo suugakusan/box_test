@@ -1,0 +1,10 @@
+<% if boxposts.any? %>
+  <ul class="list-unstyled mt-2">
+    <% boxposts.each do |boxpost| %>
+      <%= boxpost.content%>
+      <% if current_user == boxpost.user %>
+          <%= link_to "削除", boxpost, method: :delete %>
+        <% end %>
+    <% end %>
+  </ul>
+<% end %>

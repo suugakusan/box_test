@@ -1,5 +1,19 @@
 <% if logged_in? %>
   <p>ログイン完了ユーザ: <%= current_user.name %></p>
+  <div class="container">
+    <%= form_with(model: @boxpost) do |f| %>
+    <div class="row">
+        <div class="col-2">
+          <%= f.text_field :content, class: 'form-control' %>
+        </div>
+        <div class="col-4 align-self-end">
+          <%= f.submit '投稿', class: 'btn btn-primary w-25' %>
+        </div>
+    <% end %>
+    </div>
+  </div>
+  <%= render 'boxposts/boxposts', boxposts: @boxposts %>
+  
 <% else %>
 <div class="bg-secondary p-3 p-sm-5 my-4 rounded">
   <div class="text-center text-white">
