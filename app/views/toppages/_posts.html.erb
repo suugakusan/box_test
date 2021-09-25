@@ -1,0 +1,22 @@
+<%= render 'boxposts/boxposts', boxposts: @boxposts %>
+  <div class="container">
+    <div class="row">
+      <div class="col-2">
+        <p>最小値：<%= lowest%> </p>
+      </div>
+      <div class="col-2">
+        <p>第１四分位数：<%= q1%> </p>
+      </div>
+      <div class="col-2">
+        <p>中央値：<%= median%> </p>
+      </div>
+      <div class="col-2">
+        <p>第３四分位数：<%= q3%> </p>
+      </div>
+      <div class="col-2">
+        <p>最大値：<%= highest%> </p>
+      </div>
+    </div>
+  </div>
+  <h1>気温の変化</h1>
+  <%= high_chart("sample", @graph) %>
