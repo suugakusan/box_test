@@ -7,19 +7,9 @@ class ToppagesController < ApplicationController
       sorted = arry.sort
       
       len = arry.length
-      if len == 0
-        lowest = 0
-      else
-        lowest = arry.min
-      end
       
-      if len == 0
-        highest = 0
-      else
-        highest = arry.max
-      end
-      
-      #median = len % 2 == 1 ? sorted[len/2] : (sorted[len/2 - 1] + sorted[len/2]).to_f / 2
+      len == 0 ? lowest = 0 : lowest = arry.min
+      len == 0 ? highest = 0 : highest = arry.max
       
       if len == 0
         median = 0
@@ -29,11 +19,7 @@ class ToppagesController < ApplicationController
         median = sorted[len/2]
       end
           
-      if len % 2 == 0
-        q1_arry = sorted.slice(0,len/2)
-      else
-        q1_arry = sorted.slice(0, len/2)
-      end
+      q1_arry = sorted.slice(0, len/2)
       q1_len = q1_arry.length
       q1 = q1_len % 2 == 1 ? q1_arry[q1_len/2].to_i : (q1_arry[q1_len/2 - 1].to_i + q1_arry[q1_len/2].to_i).to_f / 2
       
@@ -62,8 +48,6 @@ class ToppagesController < ApplicationController
       f.series(name: '気温', data: current_quantity)
       f.chart(type: "boxplot" )
       end
-      
     end
-    
   end
 end
