@@ -1,24 +1,42 @@
-# README
+## 1.はじめに
+閲覧していただきありがとうございます。
+今回作成したアプリの経緯や開発の苦悩などをまとめました。
+よろしければ、ご覧ください。
+## 2.関連URL
+アプリ：https://box-test-app.herokuapp.com/  
+Qiita：https://qiita.com/suugakusan/items/ba4aeac7519e97c550d0
+## 3.アプリ概要
+数値を入力するだけでその箱ひげ図を作成することができるアプリです。
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+* 箱ひげ図の作成・編集・削除機能
+* 数値の入力・削除
+* ログイン機能
+* ゲストログイン機能
 
-Things you may want to cover:
+## 4.アプリの制作背景
+　中学２年生の数学で学ぶ箱ひげ図ですが、教科書の内容を扱うだけでは、理解が不十分になります。特に、四分位数を求めることはできても、箱ひげ図から実際のデータを予測できる力が足りません。
+そこで、数値を入力するだけで箱ひげ図を作成できるアプリがあれば、箱ひげ図を苦手とする生徒を救うことができるのではないかと思い制作しました。
 
-* Ruby version
+## 5.機能一覧
+|  |機能  |gem  |
+|:---: |:---: |:---: |
+|1  |ログイン・ログアウト  |×  |
+|2  |アカウント登録  |×  |
+|3  |グラフ | LazyHighCharts |
+|4  |レスポンシブ  |Bootstrap |
+|5  |ゲストログイン  |×  |
+|6  |レスポンシブ  |Bootstrap  |
 
-* System dependencies
+## 6.使用技術
 
-* Configuration
+* 言語 : Ruby (3.0.0)
+* フレームワーク：Ruby on Rails (6.1.4.1)
+* フロントエンド : HTML&CSS/Bootstrap/JavaScript/SCSS
+* DB : PostgreSQL
+* インフラ : Heroku
+* ソースコード管理：GitHub
 
-* Database creation
+## 7.工夫したところ
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- 入力したデータは、小さい順に並び変えることでイメージをつかみやすくしました
+- 最小値、第１四分位数、中央値、第３四分位数、最大値も表示させました。 
