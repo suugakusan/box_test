@@ -33,14 +33,16 @@ class ToppagesController < ApplicationController
       q3_len = q3_arry.length  
       q3 = q3_len % 2 == 1 ? q3_arry[q3_len/2].to_i : (q3_arry[q3_len/2 - 1].to_i + q3_arry[q3_len/2].to_i).to_f / 2
       
-      category = ["データ"]
-      current_quantity = [[lowest,q1,median,q3,highest]]
       
        @lowest = lowest
        @q1 = q1
        @median = median
        @q3 = q3
        @highest = highest
+       
+      category = ["データ"]
+      current_quantity = [[lowest,q1,median,q3,highest]]
+      
        
       @graph = LazyHighCharts::HighChart.new('graph') do |f|
       f.title(text: '気温の箱ひげ図')

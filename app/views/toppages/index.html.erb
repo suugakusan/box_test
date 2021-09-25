@@ -6,7 +6,7 @@
         <div class="col-2">
           <%= f.text_field :content, class: 'form-control' , required: true%>
         </div>
-        <div class="col-4 align-self-end">
+        <div class="col-6 align-self-end">
           <%= f.submit '投稿', class: 'btn btn-primary w-25' %>
         </div>
     <% end %>
@@ -15,19 +15,19 @@
   <%= render 'boxposts/boxposts', boxposts: @boxposts %>
   <div class="container">
     <div class="row">
-      <div class="col-2">
+      <div class="col-3 col-xs-3 col-sm-2">
         <p>最小値：<%=@lowest%> </p>
       </div>
-      <div class="col-2">
+      <div class="col-5 col-xs-5 col-sm-3">
         <p>第１四分位数：<%=@q1%> </p>
       </div>
-      <div class="col-2">
+      <div class="col-3 col-xs-3 col-sm-2">
         <p>中央値：<%=@median%> </p>
       </div>
-      <div class="col-2">
+      <div class="col-5 col-xs-5 col-sm-3">
         <p>第３四分位数：<%=@q3%> </p>
       </div>
-      <div class="col-2">
+      <div class="col-3 col-xs-3 col-sm-2">
         <p>最大値：<%=@highest%> </p>
       </div>
     </div>
@@ -35,10 +35,23 @@
   <h1>気温の変化</h1>
   <%= high_chart("sample", @graph) %>
 <% else %>
-<div class="bg-secondary p-3 p-sm-5 my-4 rounded">
-  <div class="text-center text-white">
-    <h1>箱ひげ図作成アプリ</h1>
-    <%= link_to '新規登録!', signup_path, class: 'btn btn-lg btn-primary' %>
+<div class="container">
+  <div class="row mb-5 mt-5">
+    <div class="col-sm-6 col-xs-4" id="topimage">
+      <%= image_tag '箱ひげ図.png', class: "image" %>
+    </div>    
+    <div class="col-sm-6 clo-xs-4">
+      <div class="text">
+        <h2>箱ひげ図作成アプリ</h2>
+        <p class="title">数値を入力するだけで、箱ひげ図を作成してくれるアプリです。<br>
+            箱ひげ図が苦手な人こそ、使ってみてください！
+        </p>
+      </div>
+      <div class="text-center text-lg-start">
+        <%= link_to "はじめる", signup_path, class: 'btn btn-primary', id: "btnp"%>
+        <%= link_to "ゲストログイン", guest_login_path, method: :post, class: 'btn btn-danger' %>
+    　</div>
+  　</div>
   </div>
 </div>
 <% end %>
