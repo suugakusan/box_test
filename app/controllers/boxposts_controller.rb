@@ -5,16 +5,19 @@ class BoxpostsController < ApplicationController
   def create
     @boxpost = current_user.boxposts.build(boxpost_params)
     if @boxpost.save
+      flash[:success] = "正常に投稿しました"
       redirect_to root_url
     else
       @boxposts = current_user.boxposts.order(id: :desc)
-      render 'toppages/index'
+      flash[:danger] = "投稿に失敗しました"
+      redirect_back(fallback_location: root_path)
     end
   end
 
   def destroy
     @boxpost.destroy
     redirect_back(fallback_location: root_path)
+    flash[:success] = "削除しました"
   end
   
   private
